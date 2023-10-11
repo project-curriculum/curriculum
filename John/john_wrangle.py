@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import os
 
 # Set the working directory to the directory containing your notebook
@@ -7,8 +8,8 @@ os.chdir('/Users/jongarcia/codeup-data-science/curriculum')
 
 def get_file():
     # The file appears to be space-separated and lacks headers, so we'll specify those
-    column_names = ['timestamp', 'curriculum_topic', 'user_id', 'cohort_id', 'ip_address']
-    df = pd.read_csv("anonymized-curriculum-access.txt", delim_whitespace=True, names=column_names)
+    column_names = ['date', 'time', 'path', 'user_id', 'cohort_id', 'ip']
+    df = pd.read_csv("anonymized-curriculum-access.txt", sep=' ', names=column_names)
     return df
 
 
