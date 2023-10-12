@@ -78,3 +78,40 @@ def johns_barsubplot(ax, x, y, data, title, xlabel, hue=None, hue_order=None, hu
     ax.set_xlabel(xlabel, labelpad=20, fontsize=12)
     ax.set_ylabel('')
     ax.set_xticklabels(ax.get_xticklabels(), rotation=x_label_rotation)
+
+
+
+
+
+def horizontal_johns_barsubplot(ax, x, y, data, title, ylabel, hue=None, hue_order=None, hue_palette=None, single_color=None, sort_data=True, y_label_rotation=0, bar_font_size=12):
+    if sort_data:
+        data_to_plot = data.sort_values(x, ascending=False)
+    else:
+        data_to_plot = data
+    
+    if single_color:
+        sns.barplot(x=x, y=y, hue=hue, hue_order=hue_order, data=data_to_plot, ax=ax, color=single_color, orient="h")
+    else:
+        sns.barplot(x=x, y=y, hue=hue, hue_order=hue_order, palette=hue_palette, data=data_to_plot, ax=ax, orient="h")
+    
+    ax.set(xticklabels=[])
+    ax.xaxis.set_ticks_position('none')
+    sns.despine(left=True, bottom=True)
+    
+    x_axis_width = ax.get_xlim()[1]
+    
+    for p in ax.patches:
+        if p.get_width() < 1:
+            ax.annotate(f'{p.get_width():.2f}', (p.get_width() + (x_axis_width * 0.01), p.get_y() + p.get_height() / 2.),
+                        ha='left', va='center', fontsize=bar_font_size)
+        elif p.get_width() < 1000:
+            ax.annotate(f'{p.get_width():.0f}', (p.get_width() + (x_axis_width * 0.01), p.get_y() + p.get_height() / 2.),
+                        ha='left', va='center', fontsize=bar_font_size)
+        else:
+            ax.annotate(f'{p.get_width()/1000:.1f}K', (p.get_width() + (x_axis_width * 0.01), p.get_y() + p.get_height() / 2.),
+                        ha='left', va='center', fontsize=bar_font_size)
+    
+    ax.set_title(title, fontsize=12)
+    ax.set_ylabel(ylabel, labelpad=20, fontsize=12)
+    ax.set_xlabel('')
+    ax.yaxis.set_tick_params(rotation=y_label_rotation)
