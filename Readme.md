@@ -1,4 +1,4 @@
-# Anomaly Detection in CodeUp Curriculum Access Logs
+# CodeUp Curriculum Access Logs
 
 ## Project Description
 In this project, we set out to answer some questions regarding the access logs of the CodeUp curriculum.
@@ -28,8 +28,8 @@ In this project, we set out to answer some questions regarding the access logs o
 To be populated based on the data used in the project.
 
 ## Project Planning
-1. Acquire the data from a .csv file.
-2. Prepare the data by dropping and renaming columns and filling null values.
+1. Acquire the data from a .txt file.
+2. Prepare the data by dropping, renaming columns dealing with null values.
 3. Perform exploratory data analysis to answer the project questions.
 
 ## Data Preparation
@@ -82,6 +82,3 @@ To be populated based on the data used in the project.
 
 ### Anything else I should be aware of?
 - Findings: To be populated based on the notebook.
-
-## Additional Findings
-To be populated with any other important findings from the project.
